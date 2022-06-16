@@ -16,6 +16,7 @@ namespace ElDeportivoAPI.Models
         public DateTime FechaGenerada { get; set; }
         public int IdTrabajador { get; set; }
         public string RutaProforma { get; set; }
+        public string Estado { get; set; }
         public List<OrdenCompraDetalle> Detalles { get; set; }
     }
 

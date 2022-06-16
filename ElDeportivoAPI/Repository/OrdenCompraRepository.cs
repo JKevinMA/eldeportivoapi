@@ -72,6 +72,7 @@ namespace ElDeportivoAPI.Repository
                     sqlCommand.Parameters.Add("@Impuesto", SqlDbType.Decimal).Value = orden.Impuesto;
                     sqlCommand.Parameters.Add("@RutaProforma", SqlDbType.NVarChar).Value = orden.RutaProforma;
                     sqlCommand.Parameters.Add("@IdTrabajador", SqlDbType.Int).Value = orden.IdTrabajador;
+                    sqlCommand.Parameters.Add("@Estado", SqlDbType.NVarChar).Value = orden.Estado;
                     sqlCommand.Connection = con;
                     con.Open();
 

@@ -1,0 +1,32 @@
+17:11:24 - ElDeportivoAPI.Repository.OrdenCompraRepository / registrarOrdenCompraDetalle(...)
+-> System.Data.SqlClient.SqlException (0x80131904): Violation of PRIMARY KEY constraint 'PK_ORDENCOMPRADETALLE'. Cannot insert duplicate key in object 'dbo.ORDENCOMPRADETALLE'. The duplicate key value is (OC001).
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ElDeportivoAPI.Repository.OrdenCompraRepository.registrarOrdenCompraDetalle(OrdenCompraDetalle detalle) in C:\Users\kevin\source\repos\ElDeportivoAPI\ElDeportivoAPI\Repository\OrdenCompraRepository.cs:line 127
+ClientConnectionId:29c2a437-dc0e-4bd6-b181-9bde26b0a4f6
+Error Number:2627,State:1,Class:14
+
+17:14:07 - ElDeportivoAPI.Repository.OrdenCompraRepository / registrarOrdenCompraDetalle(...)
+-> System.Data.SqlClient.SqlException (0x80131904): Violation of PRIMARY KEY constraint 'PK_ORDENCOMPRADETALLE'. Cannot insert duplicate key in object 'dbo.ORDENCOMPRADETALLE'. The duplicate key value is (OC001).
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ElDeportivoAPI.Repository.OrdenCompraRepository.registrarOrdenCompraDetalle(OrdenCompraDetalle detalle) in C:\Users\kevin\source\repos\ElDeportivoAPI\ElDeportivoAPI\Repository\OrdenCompraRepository.cs:line 127
+ClientConnectionId:a979876a-341c-403d-b1f2-1c282a6d8d7c
+Error Number:2627,State:1,Class:14
+

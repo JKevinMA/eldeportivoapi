@@ -30,7 +30,17 @@ namespace ElDeportivoAPI.Repository
         public static string ObtenerNuevoNroOrdenCompra = "ObtenerNuevoNroOrdenCompra";
         public static string ObtenerSolicitudCotizacion = "select * from solicitudcotizacion where idsolicitudcotizacion = @idsolicitudcotizacion";
         public static string ObtenerProveedoresCotizacion = "Select p.* from proveedorcotizacion pc inner join proveedor p on p.ruc = pc.ruc where pc.idsolicitudcotizacion = @idsolicitudcotizacion ";
-        public static string RegistrarNuevaOrdenCompra = "Insert into ORDENCOMPRA (IDORDENCOMPRA,IDSOLICITUDCOTIZACION,RUC,COSTOENVIO,SUBTOTAL,IMPUESTO,FECHAGENERADA,IDTRABAJADOR,RUTAPROFORMA) values ( @IDORDENCOMPRA, @IDSOLICITUDCOTIZACION,   @RUC, @COSTOENVIO,  @SUBTOTAL, @IMPUESTO,    GETDATE(), @IDTRABAJADOR,    @RUTAPROFORMA)";                                  
+        public static string RegistrarNuevaOrdenCompra = "Insert into ORDENCOMPRA (IDORDENCOMPRA,IDSOLICITUDCOTIZACION,RUC,COSTOENVIO,SUBTOTAL,IMPUESTO,FECHAGENERADA,IDTRABAJADOR,RUTAPROFORMA,ESTADO) values ( @IDORDENCOMPRA, @IDSOLICITUDCOTIZACION,   @RUC, @COSTOENVIO,  @SUBTOTAL, @IMPUESTO,    GETDATE(), @IDTRABAJADOR,    @RUTAPROFORMA,@ESTADO)";                                  
         public static string RegistrarDetalleOrdenCompra = "Insert into ordencompradetalle(IDORDENCOMPRA,CODIGOMATERIAL,CANTIDAD,PRECIOUNITARIO) values (@IDORDENCOMPRA,@CODIGOMATERIAL,@CANTIDAD,@PRECIOUNITARIO)";
+
+        // Obtener Pedidos
+        public static string ObtenerOrdenesPedidos = "select op.*,cl.NOMBRES ,cl.APELLIDOS ,cl.DIRECCION+' - '+d.descripcion as DIRECCION,cl.TELEFONO,d.descripcion as DISTRITO from ORDENPEDIDO op inner join COTIZACION c on c.IDCOTIZACION = op.IDCOTIZACION inner join CLIENTE cl on cl.NRODOCUMENTO = c.NRODOCUMENTO inner join distrito d on d.iddistrito = cl.iddistrito WHERE CONVERT(NVARCHAR(10),FECHAENTREGA,23) = @fecha AND ESTADO = @estado";
+        public static string ObtenerCotizacionDetalle = "SELECT CD.*,P.DESCRIPCION +' '+ M.DESCRIPCION AS PRENDA,T.DESCRIPCION AS TALLA FROM COTIZACIONDETALLE CD INNER JOIN PRENDA P ON P.IDPRENDA = CD.IDPRENDA INNER JOIN MATERIAL M ON M.CODIGOMATERIAL = CD.CODIGOMATERIAL INNER JOIN TALLA T ON T.IDTALLA = CD.IDTALLA WHERE CD.IDCOTIZACION = @IDCOTIZACION ";
+
+        // Generar guia de remision
+        public static string ObtenerTransportistas = "select t.*,d.descripcion as distrito from transportista t inner join distrito d on t.iddistrito = d.iddistrito where t.iddistrito = @iddistrito";
+        public static string ObtenerDistritos = "SELECT * FROM DISTRITO";
+        public static string ObtenerNuevoNroGuiaRemision = "ObtenerNuevoNroGuiaRemision";
+        public static string RegistrarNuevaGuiaRemision = "Insert into guiaremision(idguiaremision,fechaemision,idordenpedido,idtransportista,vehiculo,placa,modelo) values(@idguiaremision,getdate(),@idordenpedido,@idtransportista,@vehiculo,@placa,@modelo)";
     }
 }
