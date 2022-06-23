@@ -1,0 +1,22 @@
+16:09:05 - ElDeportivoAPI.Repository.DespachoRepository / registrarDespacho(...)
+-> System.Data.SqlClient.SqlException (0x80131904): The parameterized query '(@IdDespacho nvarchar(6),@FechaSalida nvarchar(4000),@OrigenDesp' expects the parameter '@FechaSalida', which was not supplied.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ElDeportivoAPI.Repository.DespachoRepository.registrarDespacho(Despacho despacho) in C:\Users\kevin\source\repos\ElDeportivoAPI\ElDeportivoAPI\Repository\DespachoRepository.cs:line 73
+ClientConnectionId:dabb675b-984c-4421-a94f-70783468d45f
+Error Number:8178,State:1,Class:16
+
+17:45:56 - ElDeportivoAPI.Repository.OrdenCompraRepository / obtenerOrdenCompraDetalles(...)
+-> System.FormatException: Input string was not in a correct format.
+   at System.Number.ThrowOverflowOrFormatException(ParsingStatus status, TypeCode type)
+   at System.Number.ParseInt32(ReadOnlySpan`1 value, NumberStyles styles, NumberFormatInfo info)
+   at System.Int32.Parse(String s)
+   at ElDeportivoAPI.Repository.OrdenCompraRepository.obtenerOrdenCompraDetalles(String idOrdenCompra) in C:\Users\kevin\source\repos\ElDeportivoAPI\ElDeportivoAPI\Repository\OrdenCompraRepository.cs:line 215
+

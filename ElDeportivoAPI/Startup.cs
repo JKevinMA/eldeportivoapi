@@ -40,6 +40,9 @@ namespace ElDeportivoAPI
             services.AddScoped<ITransportistaRepository, TransportistaRepository>();
             services.AddScoped<IDistritoRepository, DistritoRepository>();
             services.AddScoped<IGuiaRemisionRepository, GuiaRemisionRepository>();
+            services.AddScoped<IDespachoRepository, DespachoRepository>();
+            services.AddScoped<IOrdenPagoRepository, OrdenPagoRepository>();
+
             services.AddCors(options => {
                 options.AddPolicy(name: MyAllowSpecificOrigins,
                                   builder => {

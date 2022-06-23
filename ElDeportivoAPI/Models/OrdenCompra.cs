@@ -18,6 +18,13 @@ namespace ElDeportivoAPI.Models
         public string RutaProforma { get; set; }
         public string Estado { get; set; }
         public List<OrdenCompraDetalle> Detalles { get; set; }
+
+        public double ImporteTotal { get; set; }
+        public string ModalidadPago { get; set; }
+        public string Telefono { get; set; }
+        public string Direccion { get; set; }
+        public string RazonSocial { get; set; }
+        public string Observacion { get; set; }
     }
 
     public class OrdenCompraDetalle
@@ -26,5 +33,6 @@ namespace ElDeportivoAPI.Models
         public string CodigoMaterial { get; set; }
         public double Cantidad { get; set; }
         public double PrecioUnitario { get; set; }
+        public string Material { get; set; }
     }
 }

@@ -10,5 +10,6 @@ namespace ElDeportivoAPI.Repository.IRepository
     {
         public Result<OrdenCompra> obtenerNuevoNroOrdenCompra(string prefijo);
         public Result<int> registrarOrdenCompra(OrdenCompra orden);
+        public Result<List<OrdenCompra>> obtenerOrdenesCompra();
     }
 }

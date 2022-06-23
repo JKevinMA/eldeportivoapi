@@ -30,7 +30,7 @@ namespace ElDeportivoAPI.Repository
         public static string ObtenerNuevoNroOrdenCompra = "ObtenerNuevoNroOrdenCompra";
         public static string ObtenerSolicitudCotizacion = "select * from solicitudcotizacion where idsolicitudcotizacion = @idsolicitudcotizacion";
         public static string ObtenerProveedoresCotizacion = "Select p.* from proveedorcotizacion pc inner join proveedor p on p.ruc = pc.ruc where pc.idsolicitudcotizacion = @idsolicitudcotizacion ";
-        public static string RegistrarNuevaOrdenCompra = "Insert into ORDENCOMPRA (IDORDENCOMPRA,IDSOLICITUDCOTIZACION,RUC,COSTOENVIO,SUBTOTAL,IMPUESTO,FECHAGENERADA,IDTRABAJADOR,RUTAPROFORMA,ESTADO) values ( @IDORDENCOMPRA, @IDSOLICITUDCOTIZACION,   @RUC, @COSTOENVIO,  @SUBTOTAL, @IMPUESTO,    GETDATE(), @IDTRABAJADOR,    @RUTAPROFORMA,@ESTADO)";                                  
+        public static string RegistrarNuevaOrdenCompra = "Insert into ORDENCOMPRA (IDORDENCOMPRA,IDSOLICITUDCOTIZACION,RUC,COSTOENVIO,SUBTOTAL,IMPUESTO,FECHAGENERADA,IDTRABAJADOR,RUTAPROFORMA,ESTADO) values ( @IDORDENCOMPRA, @IDSOLICITUDCOTIZACION,   @RUC, @COSTOENVIO,  @SUBTOTAL, @IMPUESTO,    GETDATE(), @IDTRABAJADOR,    @RUTAPROFORMA,@ESTADO)";
         public static string RegistrarDetalleOrdenCompra = "Insert into ordencompradetalle(IDORDENCOMPRA,CODIGOMATERIAL,CANTIDAD,PRECIOUNITARIO) values (@IDORDENCOMPRA,@CODIGOMATERIAL,@CANTIDAD,@PRECIOUNITARIO)";
 
         // Obtener Pedidos
@@ -41,6 +41,20 @@ namespace ElDeportivoAPI.Repository
         public static string ObtenerTransportistas = "select t.*,d.descripcion as distrito from transportista t inner join distrito d on t.iddistrito = d.iddistrito where t.iddistrito = @iddistrito";
         public static string ObtenerDistritos = "SELECT * FROM DISTRITO";
         public static string ObtenerNuevoNroGuiaRemision = "ObtenerNuevoNroGuiaRemision";
-        public static string RegistrarNuevaGuiaRemision = "Insert into guiaremision(idguiaremision,fechaemision,idordenpedido,idtransportista,vehiculo,placa,modelo) values(@idguiaremision,getdate(),@idordenpedido,@idtransportista,@vehiculo,@placa,@modelo)";
+        public static string RegistrarNuevaGuiaRemision = "Insert into guiaremision(idguiaremision,fechaemision,idordenpedido,idtransportista,vehiculo,placa,modelo,estado) values(@idguiaremision,getdate(),@idordenpedido,@idtransportista,@vehiculo,@placa,@modelo,'Emitido')";
+
+        // Generar despacho
+        public static string ObtenerGuiasRemision = "SELECT G.IDGUIAREMISION,G.IDORDENPEDIDO,G.IDTRANSPORTISTA,G.VEHICULO,G.MODELO,G.PLACA,G.ESTADO,O.IDCOTIZACION, C.NOMBRES AS NOMBRESCLIENTE,C.APELLIDOS AS APELLIDOSCLIENTE,C.DIRECCION,C.TELEFONO,DIS.DESCRIPCION AS DISTRITO,G.FECHAEMISION AS FECHACREACIONGUIA,O.FECHAENTREGA,T.NOMBRES AS NOMBRESTRANSPORTISTA,T.APELLIDOS AS APELLIDOSTRANSPORTISTA FROM GUIAREMISION G INNER JOIN ORDENPEDIDO O ON O.IDORDENPEDIDO = G.IDORDENPEDIDO INNER JOIN TRANSPORTISTA T ON T.IDTRANSPORTISTA = G.IDTRANSPORTISTA INNER JOIN COTIZACION CO ON CO.IDCOTIZACION = O.IDCOTIZACION INNER JOIN CLIENTE C ON C.NRODOCUMENTO = CO.NRODOCUMENTO INNER JOIN DISTRITO DIS ON DIS.IDDISTRITO = C.IDDISTRITO  WHERE G.ESTADO = @ESTADO  AND CONVERT(NVARCHAR(10),O.FECHAENTREGA,23) = @FECHA;";
+        public static string ObtenerNuevoNroDespacho = "ObtenerNuevoNroDespacho";
+        public static string RegistrarNuevoDespacho = "INSERT INTO DESPACHO VALUES(@IDDESPACHO,GETDATE(),@ORIGENDESPACHO)";
+        public static string RegistrarDetalleDespacho = "Insert into DESPACHODETALLE values (@IDDESPACHO,@IDGUIAREMISION)";
+
+        // Generar OrdenPago y guardar recepcion de Compra
+        public static string ObtenerOrdenesCompra = "select o.IDORDENCOMPRA,o.FECHAGENERADA,(o.SUBTOTAL+o.IMPUESTO) as IMPORTETOTAL,s.MODALIDADPAGO,o.COSTOENVIO,p.* from ORDENCOMPRA o inner join PROVEEDOR p on p.RUC = o.RUC inner join SOLICITUDCOTIZACION s on s.IDSOLICITUDCOTIZACION = o.IDSOLICITUDCOTIZACION where o.ESTADO = 'Generado'";
+        public static string ObtenerOrdenesCompraDetalle = "select o.*,m.DESCRIPCION as MATERIAL from ORDENCOMPRADETALLE o inner join MATERIAL m on m.CODIGOMATERIAL= o.CODIGOMATERIAL WHERE O.IDORDENCOMPRA = @IDORDENCOMPRA;";
+        public static string RegistrarObservacionOrdenCompra = "UPDATE ORDENCOMPRA SET OBSERVACIONRECEPCION  = @OBSERVACIONRECEPCION";
+        public static string RegistrarCantidadRecepcionOrdenCompra = "UPDATE ORDENCOMPRADETALLE SET CANTIDADRECEPCION = @CANTIDADRECEPCION,PRECIORECEPCION = @PRECIORECEPCION WHERE IDORDENCOMPRA = @IDORDENCOMPRA";
+        public static string ObtenerNuevoNroOrdenPago = "ObtenerNuevoNroOrdenPago";
+
     }
 }

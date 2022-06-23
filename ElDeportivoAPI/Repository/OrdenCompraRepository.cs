@@ -140,5 +140,102 @@ namespace ElDeportivoAPI.Repository
             }
         }
 
+        public Result<List<OrdenCompra>> obtenerOrdenesCompra()
+        {
+            _bd = new Connection();
+            List<OrdenCompra> lista = new List<OrdenCompra>();
+            Result<List<OrdenCompra>> r = new Result<List<OrdenCompra>>();
+            using (SqlConnection con = _bd.sqlConnection)
+            {
+                try
+                {
+                    SqlCommand sqlCommand = new SqlCommand(Queries.ObtenerOrdenesCompra, con);
+                    sqlCommand.Connection = con;
+                    con.Open();
+
+                    using (SqlDataReader reader = sqlCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            lista.Add(new OrdenCompra
+                            {
+                                IdOrdenCompra = reader["IdOrdenCompra"].ToString(),
+                                FechaGenerada = DateTime.Parse(reader["FechaGenerada"].ToString()),
+                                ImporteTotal = double.Parse(reader["ImporteTotal"].ToString()),
+                                CostoEnvio = double.Parse(reader["CostoEnvio"].ToString()),
+                                ModalidadPago = reader["ModalidadPago"].ToString(),
+                                Ruc = reader["Ruc"].ToString(),
+                                Telefono = reader["Telefono"].ToString(),
+                                RazonSocial = reader["RazonSocial"].ToString(),
+                                Direccion = reader["Direccion"].ToString()
+                            });
+                        }
+                    }
+
+                    foreach (var item in lista)
+                    {
+                        item.Detalles = obtenerOrdenCompraDetalles(item.IdOrdenCompra);
+                    }
+                    r.Success = true;
+                    r.Response = lista;
+
+                }
+                catch (Exception ex)
+                {
+                    r.Success = false;
+                    r.Message = ex.Message;
+                }
+                finally
+                {
+                    con.Close();
+                    con.Dispose();
+                }
+            }
+
+            return r;
+        }
+
+        public List<OrdenCompraDetalle> obtenerOrdenCompraDetalles(string idOrdenCompra)
+        {
+            _bd = new Connection();
+            List<OrdenCompraDetalle> lista = new List<OrdenCompraDetalle>();
+            using (SqlConnection con = _bd.sqlConnection)
+            {
+                try
+                {
+                    SqlCommand sqlCommand = new SqlCommand(Queries.ObtenerOrdenesCompraDetalle, con);
+                    sqlCommand.Parameters.Add("@idOrdenCompra", SqlDbType.NVarChar).Value = idOrdenCompra;
+                    sqlCommand.Connection = con;
+                    con.Open();
+
+                    using (SqlDataReader reader = sqlCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            lista.Add(new OrdenCompraDetalle
+                            {
+                                IdOrdenCompra = reader["IdOrdenCompra"].ToString(),
+                                CodigoMaterial = reader["CodigoMaterial"].ToString(),
+                                Cantidad = int.Parse(reader["Cantidad"].ToString()),
+                                PrecioUnitario = double.Parse(reader["PrecioUnitario"].ToString()),
+                                Material = reader["Material"].ToString()
+                            });
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Log.Save(this, ex.ToString());
+                }
+                finally
+                {
+                    con.Close();
+                    con.Dispose();
+                }
+            }
+
+            return lista;
+        }
+
     }
 }
