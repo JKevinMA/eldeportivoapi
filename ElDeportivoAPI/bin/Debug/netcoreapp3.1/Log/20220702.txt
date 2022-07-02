@@ -1,0 +1,60 @@
+08:45:55 - ElDeportivoAPI.Repository.OrdenConfeccionRepository / registrarOrdenConfeccionDetalle(...)
+-> System.Data.SqlClient.SqlException (0x80131904): The parameterized query '(@IdOrdenConfeccion nvarchar(4000),@IdCotizacion nvarchar(5),@Co' expects the parameter '@IdOrdenConfeccion', which was not supplied.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ElDeportivoAPI.Repository.OrdenConfeccionRepository.registrarOrdenConfeccionDetalle(OrdenConfeccionDetalle detalle) in C:\Users\kevin\source\repos\ElDeportivoAPI\ElDeportivoAPI\Repository\OrdenConfeccionRepository.cs:line 129
+ClientConnectionId:2286ceda-3258-41d4-8942-2bc48301f86e
+Error Number:8178,State:1,Class:16
+
+08:45:55 - ElDeportivoAPI.Repository.OrdenConfeccionRepository / registrarOrdenConfeccionDetalle(...)
+-> System.Data.SqlClient.SqlException (0x80131904): The parameterized query '(@IdOrdenConfeccion nvarchar(4000),@IdCotizacion nvarchar(5),@Co' expects the parameter '@IdOrdenConfeccion', which was not supplied.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ElDeportivoAPI.Repository.OrdenConfeccionRepository.registrarOrdenConfeccionDetalle(OrdenConfeccionDetalle detalle) in C:\Users\kevin\source\repos\ElDeportivoAPI\ElDeportivoAPI\Repository\OrdenConfeccionRepository.cs:line 129
+ClientConnectionId:2286ceda-3258-41d4-8942-2bc48301f86e
+Error Number:8178,State:1,Class:16
+
+08:57:35 - ElDeportivoAPI.Repository.OrdenConfeccionRepository / registrarOrdenConfeccionDetalle(...)
+-> System.Data.SqlClient.SqlException (0x80131904): The parameterized query '(@IdOrdenConfeccion nvarchar(4000),@IdCotizacion nvarchar(5),@Co' expects the parameter '@IdOrdenConfeccion', which was not supplied.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ElDeportivoAPI.Repository.OrdenConfeccionRepository.registrarOrdenConfeccionDetalle(OrdenConfeccionDetalle detalle) in C:\Users\kevin\source\repos\ElDeportivoAPI\ElDeportivoAPI\Repository\OrdenConfeccionRepository.cs:line 129
+ClientConnectionId:5e180354-fc0e-467c-b808-8348261d2b28
+Error Number:8178,State:1,Class:16
+
+08:57:35 - ElDeportivoAPI.Repository.OrdenConfeccionRepository / registrarOrdenConfeccionDetalle(...)
+-> System.Data.SqlClient.SqlException (0x80131904): The parameterized query '(@IdOrdenConfeccion nvarchar(4000),@IdCotizacion nvarchar(5),@Co' expects the parameter '@IdOrdenConfeccion', which was not supplied.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ElDeportivoAPI.Repository.OrdenConfeccionRepository.registrarOrdenConfeccionDetalle(OrdenConfeccionDetalle detalle) in C:\Users\kevin\source\repos\ElDeportivoAPI\ElDeportivoAPI\Repository\OrdenConfeccionRepository.cs:line 129
+ClientConnectionId:5e180354-fc0e-467c-b808-8348261d2b28
+Error Number:8178,State:1,Class:16
+

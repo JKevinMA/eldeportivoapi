@@ -34,7 +34,8 @@ namespace ElDeportivoAPI.Repository
         public static string RegistrarDetalleOrdenCompra = "Insert into ordencompradetalle(IDORDENCOMPRA,CODIGOMATERIAL,CANTIDAD,PRECIOUNITARIO) values (@IDORDENCOMPRA,@CODIGOMATERIAL,@CANTIDAD,@PRECIOUNITARIO)";
 
         // Obtener Pedidos
-        public static string ObtenerOrdenesPedidos = "select op.*,cl.NOMBRES ,cl.APELLIDOS ,cl.DIRECCION+' - '+d.descripcion as DIRECCION,cl.TELEFONO,d.descripcion as DISTRITO from ORDENPEDIDO op inner join COTIZACION c on c.IDCOTIZACION = op.IDCOTIZACION inner join CLIENTE cl on cl.NRODOCUMENTO = c.NRODOCUMENTO inner join distrito d on d.iddistrito = cl.iddistrito WHERE CONVERT(NVARCHAR(10),FECHAENTREGA,23) = @fecha AND ESTADO = @estado";
+        public static string ObtenerOrdenesPedidos = "select op.*,cl.NOMBRES ,cl.APELLIDOS ,cl.DIRECCION+' - '+d.descripcion as DIRECCION,cl.TELEFONO,d.descripcion as DISTRITO from ORDENPEDIDO op inner join COTIZACION c on c.IDCOTIZACION = op.IDCOTIZACION inner join CLIENTE cl on cl.NRODOCUMENTO = c.NRODOCUMENTO inner join distrito d on d.iddistrito = cl.iddistrito WHERE ESTADO = @estado";
+        public static string ObtenerOrdenesPedidosFecha = "select op.*,cl.NOMBRES ,cl.APELLIDOS ,cl.DIRECCION+' - '+d.descripcion as DIRECCION,cl.TELEFONO,d.descripcion as DISTRITO from ORDENPEDIDO op inner join COTIZACION c on c.IDCOTIZACION = op.IDCOTIZACION inner join CLIENTE cl on cl.NRODOCUMENTO = c.NRODOCUMENTO inner join distrito d on d.iddistrito = cl.iddistrito WHERE CONVERT(NVARCHAR(10),FECHAENTREGA,23) = @fecha AND ESTADO = @estado";
         public static string ObtenerCotizacionDetalle = "SELECT CD.*,P.DESCRIPCION +' '+ M.DESCRIPCION AS PRENDA,T.DESCRIPCION AS TALLA FROM COTIZACIONDETALLE CD INNER JOIN PRENDA P ON P.IDPRENDA = CD.IDPRENDA INNER JOIN MATERIAL M ON M.CODIGOMATERIAL = CD.CODIGOMATERIAL INNER JOIN TALLA T ON T.IDTALLA = CD.IDTALLA WHERE CD.IDCOTIZACION = @IDCOTIZACION ";
 
         // Generar guia de remision
@@ -55,6 +56,13 @@ namespace ElDeportivoAPI.Repository
         public static string RegistrarObservacionOrdenCompra = "UPDATE ORDENCOMPRA SET OBSERVACIONRECEPCION  = @OBSERVACIONRECEPCION";
         public static string RegistrarCantidadRecepcionOrdenCompra = "UPDATE ORDENCOMPRADETALLE SET CANTIDADRECEPCION = @CANTIDADRECEPCION,PRECIORECEPCION = @PRECIORECEPCION WHERE IDORDENCOMPRA = @IDORDENCOMPRA";
         public static string ObtenerNuevoNroOrdenPago = "ObtenerNuevoNroOrdenPago";
+
+        // Generar orden de confeccion
+        public static string ObtenerNuevoNroOrdenConfeccion = "ObtenerNuevoNroOrdenConfeccion";
+        public static string ObtenerFichasES = "SELECT * FROM FICHAES where estado = @estado";
+        public static string ObtenerFichasESFecha = "SELECT * FROM FICHAES where estado = @estado and convert(nvarchar(10),fecha,23) = @fecha";
+        public static string RegistrarNuevaOrdenConfeccion = "INSERT INTO ORDENCONFECCION(IDORDENCONFECCION,FECHAGENERADO,TIPOPRODUCCION,ESTADO,IDTRABAJADOR,IDORDENPEDIDO,IDFICHAES) VALUES (@IDORDENCONFECCION,GETDATE(),@TIPOPRODUCCION,@ESTADO,@IDTRABAJADOR,@IDORDENPEDIDO,@IDFICHAES) ";
+        public static string RegistrarDetalleOrdenConfeccion = "INSERT INTO ORDENCONFECCIONDETALLE(IDORDENCONFECCION,IDCOTIZACION,IDPRENDA,CODIGOMATERIAL,IDTALLA,IDDETALLEDISENO,CANTIDADFABRICAR) VALUES (@IDORDENCONFECCION,@IDCOTIZACION,@IDPRENDA,@CODIGOMATERIAL,@IDTALLA,@IDDETALLEDISENO,@CANTIDADFABRICAR)";
 
     }
 }

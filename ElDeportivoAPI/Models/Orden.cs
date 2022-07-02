@@ -25,5 +25,6 @@ namespace ElDeportivoAPI.Models
         public double CantidadRequerida { get; set; }
         public string Material { get; set; }
         public string Presentacion { get; set; }
+        public double CantidadSalida { get; set; }
     }
 }

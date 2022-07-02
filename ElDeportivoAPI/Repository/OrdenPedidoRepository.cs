@@ -22,7 +22,12 @@ namespace ElDeportivoAPI.Repository
             {
                 try
                 {
-                    SqlCommand sqlCommand = new SqlCommand(Queries.ObtenerOrdenesPedidos, con);
+                    var consulta = Queries.ObtenerOrdenesPedidos;
+                    if (fecha != "-")
+                    {
+                        consulta = Queries.ObtenerOrdenesPedidosFecha;
+                    }
+                    SqlCommand sqlCommand = new SqlCommand(consulta, con);
                     sqlCommand.Parameters.Add("@FECHA", SqlDbType.NVarChar).Value = fecha;
                     sqlCommand.Parameters.Add("@ESTADO", SqlDbType.NVarChar).Value = estado;
                     sqlCommand.Connection = con;
@@ -90,7 +95,12 @@ namespace ElDeportivoAPI.Repository
                             lista.Add(new CotizacionDetalle
                             {
                                 IdCotizacion = reader["IdCotizacion"].ToString(),
+                                CodigoMaterial = reader["CodigoMaterial"].ToString(),
+                                IdDetalleDiseno = int.Parse(reader["IdDetalleDiseno"].ToString()),
+                                IdPrenda = int.Parse(reader["IdPrenda"].ToString()),
+                                IdTalla = int.Parse(reader["IdTalla"].ToString()),
                                 Prenda = reader["Prenda"].ToString(),
+                                Descripcion = reader["Descripcion"].ToString(),
                                 Cantidad = int.Parse(reader["Cantidad"].ToString()),
                                 Talla = reader["Talla"].ToString()
                             });

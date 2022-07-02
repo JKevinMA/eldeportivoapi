@@ -216,7 +216,7 @@ namespace ElDeportivoAPI.Repository
                             {
                                 IdOrdenCompra = reader["IdOrdenCompra"].ToString(),
                                 CodigoMaterial = reader["CodigoMaterial"].ToString(),
-                                Cantidad = int.Parse(reader["Cantidad"].ToString()),
+                                Cantidad = double.Parse(reader["Cantidad"].ToString()),
                                 PrecioUnitario = double.Parse(reader["PrecioUnitario"].ToString()),
                                 Material = reader["Material"].ToString()
                             });
